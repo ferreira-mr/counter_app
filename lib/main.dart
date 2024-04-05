@@ -20,8 +20,21 @@ class ContadorApp extends StatelessWidget {
   }
 }
 
-class TelaInicial extends StatelessWidget {
+class TelaInicial extends StatefulWidget {
   const TelaInicial({super.key});
+
+  @override
+  State<TelaInicial> createState() => _TelaInicialState();
+}
+
+class _TelaInicialState extends State<TelaInicial> {
+  int _contagem = 0;
+
+  void _incrementar() {
+    setState(() {
+      _contagem++;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +49,13 @@ class TelaInicial extends StatelessWidget {
           children: [
             const Text("Total:"),
             Text(
-              "15",
+              "$_contagem",
               style: Theme.of(context).textTheme.headlineLarge,
             ),
           ],
         )),
         floatingActionButton: FloatingActionButton(
-          onPressed: () => {print("Botão Pressionado!")},
+          onPressed: () => {_incrementar()},
           tooltip: "Adicionar",
           child: const Icon(Icons.add),
         ));
