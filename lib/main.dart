@@ -9,8 +9,13 @@ class ContadorApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: TelaInicial(),
+    return MaterialApp(
+      title: "Contador",
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const TelaInicial(),
     );
   }
 }
@@ -20,8 +25,26 @@ class TelaInicial extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Text("Olá Mundo!"),
-    );
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text("Contador"),
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        ),
+        body: Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text("Total:"),
+            Text(
+              "15",
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+          ],
+        )),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => {print("Botão Pressionado!")},
+          tooltip: "Adicionar",
+          child: const Icon(Icons.add),
+        ));
   }
 }
